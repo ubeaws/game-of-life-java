@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven_3.9.9'
-        jdk 'JDK-21'
+        maven 'Maven-3.9.9'   // Corrected Maven version name
+        jdk 'JDK-21'          // Corrected JDK version name
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/game-of-life-java.git'
+                git 'https://github.com/ubeaws/game-of-life-java.git'  // Your actual repo
             }
         }
 
@@ -49,4 +49,3 @@ pipeline {
         }
     }
 }
-
