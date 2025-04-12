@@ -1,26 +1,21 @@
 package com.example;
 
 public class GameOfLife {
+    
+    // Main method that gets called when you run the application
+    public static void main(String[] args) {
+        // This is where you can initialize your game logic
+        System.out.println("Hello, Game of Life!");
 
-    public boolean isCellAliveNextGen(boolean[][] grid, int row, int col) {
-        int liveNeighbors = 0;
-        int[] directions = {-1, 0, 1};
-
-        for (int dr : directions) {
-            for (int dc : directions) {
-                if (dr == 0 && dc == 0) continue;
-                int r = row + dr, c = col + dc;
-                if (r >= 0 && r < grid.length && c >= 0 && c < grid[0].length) {
-                    if (grid[r][c]) liveNeighbors++;
-                }
-            }
-        }
-
-        if (grid[row][col]) {
-            return liveNeighbors == 2 || liveNeighbors == 3;
-        } else {
-            return liveNeighbors == 3;
-        }
+        // Example: You can start the game logic here
+        // For example, you might want to call a method that runs the game logic
+        // runGame();
+    }
+    
+    // Example method to start your game
+    public static void runGame() {
+        // Game logic goes here
+        System.out.println("Running Game of Life...");
     }
 }
 
