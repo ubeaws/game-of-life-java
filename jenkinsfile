@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven-3.9.9'   // Corrected Maven version name
-        jdk 'JDK-21'          // Corrected JDK version name
+        maven 'Maven-3.9.9'
+        jdk 'JDK-21'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ubeaws/game-of-life-java.git'  // Your actual repo
+                git 'https://github.com/ubeaws/game-of-life-java.git'
             }
         }
 
@@ -26,6 +26,15 @@ pipeline {
             post {
                 always {
                     junit '**/target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        // 👉 Add SonarQube analysis here
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube-Local') {
+                    sh 'mvn verify sonar:sonar'
                 }
             }
         }
@@ -49,3 +58,4 @@ pipeline {
         }
     }
 }
+
